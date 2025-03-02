@@ -1,109 +1,83 @@
-# SysPAD API - v1.2.0
+# Sistema de Proteção de Dados Baseado em Técnicas de Criptografia e Anonimização (Back-end)
 
-## Description
+A API SysPAD consiste em um sistema RESTful para proteção de bancos de dados através de criptografia e anonimização, seguindo os princípios das legislações LGPD e GDPR. Este componente é responsável pelo processamento seguro de dados e integração com o agent monitor e front-end.
 
-The Syspad API (Application Programming Interface) consists of a RESTful (Representational State Transfer) model that enables the interaction of different systems efficiently through a set of architectural guidelines based on the HTTP protocol, implementing standardized methods such as GET, POST, PUT, and DELETE. The system has the function of protecting the database based on encryption and anonymization.
+# Estrutura do readme.md
 
-## Key Features
+Este documento está organizado nas seguintes seções principais:
 
-- User
-- Auth
-- Password
-- Valid database
-- Database
-- Anonymization type
-- Anonymization record
-- Encryption
-- Anonymization
-- Sql log
+1. **Funcionalidades-Chave**  
+   Principais capacidades técnicas do sistema
 
-## Complete Documentation
+2. **Documentação Técnica**  
+   Detalhes de endpoints e especificação OpenAPI
 
-The complete API documentation, including details about all available endpoints, request parameters, response formats, and usage examples, can be found at [DOCUMENTATION LINK](https://github.com/FRIDA-LACNIC-UECE/documentation/blob/main/SysPAD%20Documentation.pdf) or SWAGGER DOCUMENTATION at http://localhost:5000 after executed.
+3. **Tecnologias Utilizadas**  
+   Stack tecnológico completo do back-end
 
-## Technologies Used
+4. **Instalação**  
+   Guia completo para implantação (Docker e manual)
 
-- Programming Language: Python (Version 3.10)
-- Framework/API/Web Framework: Flask Framework
-- Supported Database: MySQL and PostgreSQL
-- Object Relational Mapping: SqlAlchemy
+5. **Configuração de Ambiente**  
+   Variáveis necessárias e pré-requisitos
 
-## Installation and Usage
+6. **Usuários de Teste**  
+   Credenciais pré-configuradas para validação
 
-### Without docker: 
+7. **Estrutura do Repositório**  
+   Organização de diretórios e arquivos-chave
 
-1. Clone this repository to your local machine using the following command:
+8. **Contribuição**  
+   Diretrizes para colaboração no projeto
 
-   ```
-   git clone https://github.com/FRIDA-LACNIC-UECE/back-end.git
-   ```
+9. **Licença**  
+   Direitos de uso e informações legais
 
-2. Navigate to the project directory:
+# DependÊncias 
+Tecnologias Utilizadas
+Componente	Versão	Finalidade
+Python	3.10+	Lógica principal do sistema
+Flask	2.3.x	Framework web para APIs
+SQLAlchemy	2.0.23	ORM para operações de banco
+Cryptography	41.0.3	Implementação de criptografia
+Flask-SQLAlchemy	3.0.3	Integração com bancos de dados
+Swagger UI	4.19.0	Documentação interativa de APIs
 
-   ```
-   cd back-end
-   ```
+# Instalação
 
-3. Install the necessary dependencies:
+Método 1: Instalação Manual
+```bash
+Copy
+git clone https://github.com/FRIDA-LACNIC-UECE/back-end.git
+cd back-end
 
-   ```
-   pip3 install -r requirements.txt
-   ```
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 
-4. Set up the environment variables:
+# Configurar variáveis de ambiente
+export FLASK_APP=application.py
+export DATABASE_URL="mysql://user:password@localhost/db_name"
+export SECRET_KEY="chave_secreta_aleatoria"
 
-   ```
-   export FLASK_APP=application.py
-   export ENV_NAME=[ENV NAME]
-   export DATABASE_URL=[DATABASE URL]
-   export MAIL_USERNAME=[MAIL USERNAME]
-   export MAIL_PASSWORD=[MAIL PASSWORD]
-   export SECRET_KEY=[SECRET KEY]
-   ```
+# Inicializar banco de dados
+flask create_db
 
-5. Create database tables:
+# Iniciar serviço
+flask run --port=5000
+Método 2: Via Docker
+bash
+Copy
+docker compose up --build
+```
 
-   ```
-   flask create_db
-   ```
+# Variáveis necessárias no .env
+## Usuários de Teste
 
-6. Start the server:
+| Perfil        | Email                   | Senha         | Acessos               |
+|---------------|-------------------------|---------------|-----------------------|
+| Administrador | admin@example.com       | Admin@123     | Controle completo     |
+| Convidado      | convidado@example.com   | Convidado@123 | Operações limitadas   |
 
-   ```
-   python3 application.py
-   ```
-
-### With docker:
-1. Set up the environment variables:
-
-   ```
-   export MAIL_USERNAME=mail_username
-   export MAIL_PASSWORD=mail_password
-   export SECRET_KEY=secret_key
-   ```
-
-2. Start the docker compose:
-
-   ```
-   docker compose up
-   ```
-
-## Test Users
-
-### Guest user:
-- Email: convidado@example.com
-- Password: Convidado@123
-
-### Admin user:
-- Email: admin@example.com
-- Password: Admin@123
-
-## Contributing
-
-If you would like to contribute to the project, please follow these steps:
-
-1. Fork this repository.
-2. Create a branch for your feature (`git checkout -b feature/your-feature`).
-3. Commit your changes (`git commit -m 'Add your feature'`).
-4. Push the branch (`git push origin feature/your-feature`).
-5. Open a pull request.
+# Licença
+Este projeto não possui licença específica, podendo ser utilizado livremente para fins acadêmicos e de pesquisa. Para uso comercial, entre em contato com LARCES/UECE.
